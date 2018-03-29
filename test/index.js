@@ -32,10 +32,7 @@ describe("Print Module", () => {
 
     // TO DO do we really need to be doing this startup "by hand" here?
     new Print(application)
-    application.start()
-    return new Promise((resolve, reject) => {
-      application.onceAfter('launch', () => { resolve() })
-    })
+    return application.start()
   })
 
   describe("Load", () => {
