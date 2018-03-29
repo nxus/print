@@ -1,7 +1,7 @@
 {
   "name": "nxus-print",
   "version": "4.0.0-1",
-  "description": "Web page printing module ",
+  "description": "Web page printing module",
   "main": "lib",
   "scripts": {
     "preversion": "npm test",
