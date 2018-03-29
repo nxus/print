@@ -1,0 +1,21 @@
+<style>
+  .media-print {
+    display: none;
+  }
+  .not-media-print {
+    display: block;
+  }
+  @media print {
+    .media-print {
+      display: block;
+    }
+    .not-media-print {
+      display: none;
+    }
+  }
+  body {
+    background-color: green;
+  }
+</style>
+<div class="media-print">This line should display.</div>
+<div class="not-media-print">This line should <em>not</em> display.</div>

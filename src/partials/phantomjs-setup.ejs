@@ -1,0 +1,35 @@
+<script>
+  /* Converts CSS '@media print' rules to '@media all'.
+   * hack until PhantomJS supports setting media type
+   * see: https://github.com/ariya/phantomjs/issues/10374
+   *
+   * FYI: the version of WebKit used by PhantomJS 2.1.1 doesn't appear
+   * to support ES6 features (e.g. let, const, arrow functions).
+   */
+  function hackMediaPrint() {
+    // var div = document.createElement('div')
+    // div.innerText = "Kilroy was here!"
+    // document.body.appendChild(div)
+    var styleSheet, rules, i
+    for (i = 0; i < document.styleSheets.length; i += 1) {
+      styleSheet = document.styleSheets[i]
+      if (typeof styleSheet === 'object') {
+        rules = styleSheet.cssRules
+        if (rules) {
+          Object.keys(rules).forEach(function (key) {
+            var rule = rules[key], hasAll = false, hasPrint = false, medium, i
+            if (rule.type === 4) { // CSSRule.MEDIA
+              for (i = 0; i < rule.media.length; i += 1) {
+                medium = rule.media[i]
+                if (medium === 'all') hasAll = true
+                if (medium === 'print') hasPrint = true
+              }
+              if (hasPrint && !hasAll) rule.media.appendMedium('all')
+            }
+          })
+        }
+      }
+    }
+  }
+  window.addEventListener('load', hackMediaPrint)
+</script>

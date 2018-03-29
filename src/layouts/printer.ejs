@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../../theme/partials/head.ejs') %>
+<style>
+  body: {
+    height: auto;
+  }
+  #us_report_button {
+    display: none;
+  }
+</style>
+<%- include('./renderScript.ejs') %>
+<body>
+<div class="content-wrapper">
+<div class="row"><div class="col-lg-12">
+   <%- content %>
+   <%- include('../../theme/partials/scripts.ejs') %>
+</div></div>
+</div>
+</body>
+
+</html>

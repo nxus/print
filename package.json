@@ -1,0 +1,53 @@
+{
+  "name": "nxus-print",
+  "version": "4.0.0-1",
+  "description": "Web page printing module ",
+  "main": "lib",
+  "scripts": {
+    "preversion": "npm test",
+    "postversion": "npm run build-docs && git push && git push --tags",
+    "test": "NODE_ENV=test mocha --compilers js:babel-register --reporter spec test/*.js",
+    "compile": "rm -rf lib/; babel src --out-dir lib; cp -r src/layouts src/partials lib/",
+    "prepublish": "npm run compile",
+    "build-docs": "NAME=\"${NAME:-$npm_package_name}\" VERSION=\"${VERSION:-$npm_package_version}\" && documentation readme --readme-file ./README.md --github --project-name ${NAME} --project-version ${VERSION} --section ${NAME} --config documentation.yml ./src/index.js",
+    "publish-docs": "npm run build-docs && git add ./README.md && git commit -m 'Updated README API Docs' && git push",
+    "build-shared-docs": "NAME=\"${NAME:-$npm_package_name}\" VERSION=\"${VERSION:-$npm_package_version}\" OUTPUT=\"${OUTPUT:-./docs}\" && documentation build --output ${OUTPUT} --github --format html --project-name ${NAME} --project-version ${VERSION} --config documentation.yml ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nxus/print.git"
+  },
+  "contributors": {
+    "name": "davidkellerman"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nxus/print/issues"
+  },
+  "homepage": "https://github.com/nxus/print",
+  "engines": {
+    "node": "~6"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "mkdirp-promise": "^5.0.1",
+    "nxus-core": "^4.1.1",
+    "nxus-templater": "^4.0.0",
+    "webshot": "^0.18.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "documentation": "^6.1.0",
+    "mocha": "^3.5.3",
+    "nxus-router": "^4.0.0",
+    "should": "^7.0.2",
+    "sinon": "^1.17.2"
+  }
+}
