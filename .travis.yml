@@ -11,16 +11,17 @@ addons:
     - g++-4.8
 cache:
   directories:
-    - travis_phantomjs
+  - travis_phantomjs
 before_install:
-  # see https://www.npmjs.com/package/phantomjs-prebuilt
-  # Upgrade PhantomJS to v2.1.1.
-  - "export PHANTOMJS_VERSION=2.1.1"
-  - "export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH"
-  - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then rm -rf $PWD/travis_phantomjs; mkdir -p $PWD/travis_phantomjs; fi"
-  - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -O $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi"
-  - "if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
-  - "phantomjs --version"
+- export PHANTOMJS_VERSION=2.1.1
+- export PATH=$PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64/bin:$PATH
+- if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then rm -rf $PWD/travis_phantomjs;
+  mkdir -p $PWD/travis_phantomjs; fi
+- if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then wget https://github.com/Medium/phantomjs/releases/download/v$PHANTOMJS_VERSION/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
+  -O $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2; fi
+- if [ $(phantomjs --version) != $PHANTOMJS_VERSION ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-$PHANTOMJS_VERSION-linux-x86_64.tar.bz2
+  -C $PWD/travis_phantomjs; fi
+- phantomjs --version
 notifications:
   slack:
-    secure: gweAR5L+oAWljbqfj+VT3GearRDysb3fFPTxpATGaihRmIflsueXHXL3ayRBNNm09X9nWwN9B4AUhuFxZ+P3nYlEGR5xtaHQQLRghO5RKKVngBksAakUY0sGmItc+lbRdMnR9YcfMBQFfL0RmCCYzVYl2CoWERNi+G0yCeKNsmbRQD90afwerhMFVgEX0w0lu6prez/ymfl702qzMboE3oMSQAgn44yZS3cjfvRIlfFCK/H66CMKnVHLOlIZTWDLl33QDdFmbLySNqa7EpageQJh4VqZxODMcPbw41gPj5jrqfr/NYeJ3EjU4nEyu6t2K7csbV4muuflxRIfCD+NWzYrjWgjoXIP1LxSh+vfVhHgm8uL8HDRr6gKkANBM4H9/mWIYv9ImWBZktaV5w/Tm/BdYfR3rTUadh6PksdHe1Nx946Jks4hBEY+xf1Y635FlEgLVucNtUt4xl4Pj88D7/WGlS3cAUUJfpDaZpi00d6A6DbK1HM2uRhNiiEh1Ar64AQy1shtK7xvK7C4VwFdEhPBCIUx5iW55p957RZO8tQJTWZqfnykBlf/c5SNItI2l48mqKH01XSjXu6WazlUQSq3yQvhyUoFPH++PA69WK5q6Ph3uumJ64bL/MYyDxZ60kXH1uzZ4UbkMt/W9gHUh3UqECGSEYMMUZR/hyKEbKQ=
+    secure: c6ecWmL2v8H3o9eRksTmLbMIwLb7YyNKmBHgv7bHxznCWgh/JvUvGiiaUomUg8NNU1KGjwap67z9iZAZ4Ti04xi1ZrPoLk/eJ0bWBYYr7lFa2wHGABxU6EO0yYjj0ZBirttyj2Sk3pIXIkeg9THQSBU3HHiEd5Wip2NYcwX3NoRJQLKILdVOP7BL8aDjSxIqP2662s71AEWvpfw3/S47Ml66IQBEL16VgER4zR9KjJXS/D3jYe0lp8paC3aQE+amW/nHJ5qlDMX9g7qu7agbsduR89Krdl4f+Ke3Bw45zQQ0LFRXTcoJ2uWWdcyQjUxFdb9CARXwKTF0N3eBaLdT7PyB9aqz8T67wbSfcemDHpu8dAzknTbPnRHRssZz0qTVZuNCecc0wrihQqaOV78RUzRvPJVU6It/QxQnQIui2ektH6H5CcCQHtqM55wndq7qOHzmHsORXyH6ASdIZclOordmWAsMATOnnE6dEvuixaeA42MMHrMXQw5FpUT8y0aA4r8NwimrP09JjrmJLEPgQeeGzS/DNtnDq6FsU639nbya3boAtkv4nSSXvC92/UVt1aI/ThYR61oAOu58cpyrE2xWg5ecwkt3nQpphFYp/N9vhJa0vMewQwZTTEMV+fwifpbycFEcwGF8E3BiGCPYBlFtnCVKMtZVazWS2n0HOZA=
